@@ -1,0 +1,35 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Sample Data: Replace this with your actual data
+data = {
+    'Store Name': ['VW Store 1', 'VW Store 2', 'VW Store 3', 'VW Store 4', 'VW Store 5', 'VW Store 6'],
+    'Location': ['New York', 'Los Angeles', 'Chicago', 'New York', 'Los Angeles', 'Chicago'],
+    'Sales': [1500, 1200, 1000, 1700, 1400, 1100]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Analyze categorical data: Count of stores by location
+location_counts = df['Location'].value_counts()
+
+print("Store Counts by Location:")
+print(location_counts)
+
+# Visualizing the store locations
+plt.figure(figsize=(8, 6))
+
+# Bar plot using seaborn
+sns.countplot(x='Location', data=df, palette='viridis')
+plt.title('Number of Volkswagen Stores by Location')
+plt.xlabel('Location')
+plt.ylabel('Number of Stores')
+plt.show()
+
+# Pie chart using matplotlib
+location_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, figsize=(7, 7), colors=['lightblue', 'lightgreen', 'salmon'])
+plt.title('Proportion of Volkswagen Stores by Location')
+plt.ylabel('')
+plt.show()
